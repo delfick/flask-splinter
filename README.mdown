@@ -1,0 +1,57 @@
+Flask Splinter Example
+======================
+
+This is an example of testing a flask app with Splinter.
+
+Usage
+-----
+
+First, assuming you use virtualenvs, make your virtualenv and get into that.
+
+Then:
+
+    $ pip install -r test_requirements.pip
+    $ ./splinter_tests.py
+
+What?
+-----
+
+So app.py defines an App class that has a start method and a stop method on it.
+
+The spinter_tests.py will:
+
+    * Create an instance of App
+    * Call start on the app in a new thread
+    * Start nosetests in a new thread (programmatically)
+    * Wait for nosetests to finish
+    * Call stop on the app
+
+Done.
+
+Improvements
+------------
+
+In a real world app, you'd have unit tests as well and you wouldn't want to be
+running these when those get run, so you'd seperate them out.
+
+i.e. have a folder structure of:
+
+    my_awesome_app/
+        <app here>
+
+    tests/
+        unit/
+            <unit tests here>
+
+        splinter/
+            <splinter tests here>
+
+    tests.py
+    setup.py
+    etc
+
+Where tests.py let's you say which type of tests you want to run and start
+nosetests with the appropiate flags for restricting what tests are run
+(i.e. the -w flag)
+
+Also, real tests would actually use Splinter properly :p

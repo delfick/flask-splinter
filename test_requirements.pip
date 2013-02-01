@@ -1,0 +1,6 @@
+flask
+nose
+nose-testconfig
+werkzeug
+splinter
+
